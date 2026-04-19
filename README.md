@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DevPort - Futuristic Developer Portfolio
+
+A modern, futuristic personal portfolio website with dual-mode UI (Terminal & Website) built with Next.js, Tailwind CSS, and Framer Motion.
+
+## Features
+
+- **Dual Mode UI**: Switch between Terminal mode and Website mode
+- **Terminal Mode**: Interactive command-line interface with fake CLI commands
+- **Website Mode**: Modern, clean portfolio UI with glassmorphism design
+- **Smooth Animations**: Powered by Framer Motion
+- **Responsive**: Fully responsive design
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Commands
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+In Terminal mode, you can use these commands:
 
-## Learn More
+- `help` - Show available commands
+- `about` - About me
+- `skills` - Technical skills
+- `projects` - Featured projects
+- `resume` - View/Download CV
+- `contact` - Contact info
+- `clear` - Clear terminal
+- `gui` - Switch to Website mode
 
-To learn more about Next.js, take a look at the following resources:
+## Customization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Update Personal Information
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Edit the following files to customize content:
 
-## Deploy on Vercel
+- `src/components/sections/Hero.tsx` - Name, role, tagline
+- `src/components/sections/About.tsx` - Bio
+- `src/components/sections/Skills.tsx` - Skills grid
+- `src/components/sections/Projects.tsx` - Projects
+- `src/components/sections/Contact.tsx` - Email, social links
+- `src/components/terminal/Terminal.tsx` - Terminal data
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Update Colors
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Colors are defined in `src/app/globals.css`:
+
+```css
+:root {
+  --primary: #22d3ee;      /* Cyan */
+  --accent: #a78bfa;       /* Purple */
+  --background: #020617;      /* Dark background */
+  --background-end: #0f172a; /* Lighter background */
+}
+```
+
+## Keyboard Shortcuts
+
+- `Ctrl + ``` - Toggle between Terminal and Website mode
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import the project in Vercel
+3. Deploy with default settings
+
+### Other Platforms
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Start production server:
+
+```bash
+npm start
+```
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) - React framework
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [Lucide React](https://lucide.dev/) - Icons
+
+## License
+
+MIT

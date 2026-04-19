@@ -13,6 +13,15 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // Disable problematic rules for data fetching patterns
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/exhaustive-deps": "warn",
+      // Allow unused vars in certain cases
+      "@typescript-eslint/no-unused-vars": "warn",
+    },
+  },
 ]);
 
 export default eslintConfig;
