@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DevPort - Futuristic Developer Portfolio
 
 A modern, futuristic personal portfolio website with dual-mode UI (Terminal & Website) built with Next.js, Tailwind CSS, and Framer Motion.
@@ -109,3 +110,6 @@ npm start
 ## License
 
 MIT
+=======
+# My_Portfolio
+>>>>>>> c37af0ca4143b2756171a9703552afe1be0e677e
