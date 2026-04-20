@@ -1,45 +1,45 @@
 export interface Profile {
   id?: string;
-  name: string;
-  role: string;
-  bio: string;
-  vision: string;
-  location: string;
-  profile_image: string;
-  email: string;
-  phone: string;
-  contact_email: string;
-  github_link: string;
-  linkedin_link: string;
-  twitter_link: string;
-  facebook_link: string;
-  instagram_link: string;
+  name?: string;
+  role?: string;
+  bio?: string;
+  vision?: string;
+  location?: string;
+  profile_image?: string;
+  email?: string;
+  phone?: string;
+  contact_email?: string;
+  github_link?: string;
+  linkedin_link?: string;
+  twitter_link?: string;
+  facebook_link?: string;
+  instagram_link?: string;
   discord_username?: string;
-  coursework: string;
-  achievements: string;
+  coursework?: string;
+  achievements?: string;
 }
 
 export interface Education {
   id: string;
   institution: string;
-  degree: string;
-  field_of_study: string;
+  degree?: string;
+  field_of_study?: string;
   start_date: string;
-  end_date: string;
-  grade: string;
-  description: string;
-  currently_studying: boolean;
+  end_date?: string;
+  grade?: string;
+  description?: string;
+  current?: boolean;
 }
 
 export interface Experience {
   id: string;
   company: string;
-  position: string;
-  location: string;
+  position?: string;
+  location?: string;
   start_date: string;
-  end_date: string;
-  description: string;
-  currently_working: boolean;
+  end_date?: string;
+  description?: string;
+  current?: boolean;
 }
 
 export interface Project {

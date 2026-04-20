@@ -6,8 +6,8 @@ export function generateATSResume(profile: Profile, education: Education[], expe
   const lines: string[] = [];
 
   // Header - Name and Role
-  lines.push(profile.name.toUpperCase());
-  lines.push(profile.role);
+  lines.push((profile.name || "").toUpperCase());
+  lines.push(profile.role || "");
   lines.push("");
 
   // Contact Information
@@ -37,7 +37,7 @@ export function generateATSResume(profile: Profile, education: Education[], expe
     lines.push("EDUCATION");
     lines.push("-----------------------------------");
     education.forEach((edu) => {
-      const dateRange = edu.currently_studying 
+      const dateRange = edu.current
         ? `${edu.start_date} - Present` 
         : `${edu.start_date} - ${edu.end_date}`;
       lines.push(`${edu.institution} | ${dateRange}`);
@@ -53,7 +53,7 @@ export function generateATSResume(profile: Profile, education: Education[], expe
     lines.push("EXPERIENCE");
     lines.push("-----------------------------------");
     experience.forEach((exp) => {
-      const dateRange = exp.currently_working 
+      const dateRange = exp.current
         ? `${exp.start_date} - Present` 
         : `${exp.start_date} - ${exp.end_date}`;
       lines.push(`${exp.position} at ${exp.company} | ${dateRange}`);
@@ -106,7 +106,7 @@ export function downloadResume(profile: Profile, education: Education[], experie
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `${profile.name.replace(/\s+/g, "_")}_Resume.txt`;
+  a.download = `${(profile.name || "Resume").replace(/\s+/g, "_")}_Resume.txt`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -223,7 +223,7 @@ export function generateHTMLResume(profile: Profile, education: Education[], exp
     <div class="item">
       <div class="item-header">
         <span class="item-title">${edu.institution}</span>
-        <span class="item-date">${edu.currently_studying ? edu.start_date + " - Present" : edu.start_date + " - " + edu.end_date}</span>
+        <span class="item-date">${edu.current ? edu.start_date + " - Present" : edu.start_date + " - " + edu.end_date}</span>
       </div>
       <p class="item-sub">${edu.degree}${edu.field_of_study ? " in " + edu.field_of_study : ""}</p>
       ${edu.grade ? `<p class="item-sub2">Grade: ${edu.grade}</p>` : ""}
@@ -240,7 +240,7 @@ export function generateHTMLResume(profile: Profile, education: Education[], exp
     <div class="item">
       <div class="item-header">
         <span class="item-title">${exp.position} at ${exp.company}</span>
-        <span class="item-date">${exp.currently_working ? exp.start_date + " - Present" : exp.start_date + " - " + exp.end_date}</span>
+        <span class="item-date">${exp.current ? exp.start_date + " - Present" : exp.start_date + " - " + exp.end_date}</span>
       </div>
       ${exp.location ? `<p class="item-sub">${exp.location}</p>` : ""}
       ${exp.description ? `<p>${exp.description.replace(/\n/g, "<br>")}</p>` : ""}
@@ -334,7 +334,7 @@ export async function downloadPDF(profile: Profile, education: Education[], expe
         const finalHeight = imgHeight * ratio;
 
         pdf.addImage(imgData, "PNG", imgX, imgY, finalWidth, finalHeight);
-        pdf.save(`${profile.name.replace(/\s+/g, "_")}_Resume.pdf`);
+        pdf.save(`${(profile.name || "Resume").replace(/\s+/g, "_")}_Resume.pdf`);
 
         printWindow.close();
         URL.revokeObjectURL(url);

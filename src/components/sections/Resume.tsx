@@ -134,7 +134,7 @@ export default function Resume() {
                       <div className="flex justify-between">
                         <span className="text-foreground">{edu.institution}</span>
                         <span className="text-text-muted text-sm">
-                          {edu.currently_studying ? `${edu.start_date} - Present` : `${edu.start_date} - ${edu.end_date}`}
+{edu.current ? `${edu.start_date} - Present` : `${edu.start_date} - ${edu.end_date}`}
                         </span>
                       </div>
                       <p className="text-text-secondary text-sm">
@@ -154,7 +154,7 @@ export default function Resume() {
                       <div className="flex justify-between">
                         <span className="text-foreground">{exp.position} at {exp.company}</span>
                         <span className="text-text-muted text-sm">
-                          {exp.currently_working ? `${exp.start_date} - Present` : `${exp.start_date} - ${exp.end_date}`}
+{exp.current ? `${exp.start_date} - Present` : `${exp.start_date} - ${exp.end_date}`}
                         </span>
                       </div>
                       {exp.description && <p className="text-text-secondary text-sm">{exp.description}</p>}
@@ -189,7 +189,7 @@ export default function Resume() {
                       {edu.degree}{edu.field_of_study && ` in ${edu.field_of_study}`}
                     </div>
                     <div className="text-sm text-text-muted">
-                      {edu.currently_studying ? `${edu.start_date} - Present` : `${edu.start_date} - ${edu.end_date}`}
+                      {edu.current ? `${edu.start_date} - Present` : `${edu.start_date} - ${edu.end_date}`}
                       {edu.grade && ` | ${edu.grade}`}
                     </div>
                   </div>
@@ -207,7 +207,7 @@ export default function Resume() {
                     <div className="font-medium text-foreground">{exp.position}</div>
                     <div className="text-sm text-text-secondary">{exp.company}</div>
                     <div className="text-sm text-text-muted">
-                      {exp.currently_working ? `${exp.start_date} - Present` : `${exp.start_date} - ${exp.end_date}`}
+                      {exp.current ? `${exp.start_date} - Present` : `${exp.start_date} - ${exp.end_date}`}
                     </div>
                   </div>
                 ))

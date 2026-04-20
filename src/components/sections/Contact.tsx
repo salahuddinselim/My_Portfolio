@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 import { MailIcon } from "@/components/ui/Icons";
 
 interface Profile {
-  name: string;
-  email: string;
-  contact_email: string;
-  github_link: string;
-  linkedin_link: string;
-  twitter_link: string;
-  facebook_link: string;
-  instagram_link: string;
+  name?: string;
+  email?: string;
+  contact_email?: string;
+  github_link?: string;
+  linkedin_link?: string;
+  twitter_link?: string;
+  facebook_link?: string;
+  instagram_link?: string;
 }
 
 interface ContactProps {

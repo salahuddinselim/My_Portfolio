@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 interface Profile {
-  name: string;
-  role: string;
-  bio: string;
-  vision: string;
+  name?: string;
+  role?: string;
+  bio?: string;
+  vision?: string;
 }
 
 interface AboutProps {

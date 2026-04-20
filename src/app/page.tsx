@@ -7,6 +7,7 @@ import Header from "@/components/layout/Header";
 import ModeToggle from "@/components/layout/ModeToggle";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
+import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Photos from "@/components/sections/Photos";
 import Resume from "@/components/sections/Resume";
@@ -113,8 +114,39 @@ export default function Home() {
     },
   ];
 
-  const displayProfile = profile || defaultProfile;
+  const displayProfile: Profile = {
+    name: profile?.name || defaultProfile.name,
+    role: profile?.role || defaultProfile.role,
+    bio: profile?.bio || defaultProfile.bio,
+    vision: profile?.vision || defaultProfile.vision,
+    location: profile?.location || defaultProfile.location,
+    profile_image: profile?.profile_image || defaultProfile.profile_image,
+    email: profile?.email || defaultProfile.email,
+    phone: profile?.phone || defaultProfile.phone,
+    contact_email: profile?.contact_email || defaultProfile.contact_email,
+    github_link: profile?.github_link || defaultProfile.github_link,
+    linkedin_link: profile?.linkedin_link || defaultProfile.linkedin_link,
+    twitter_link: profile?.twitter_link || defaultProfile.twitter_link,
+    facebook_link: profile?.facebook_link || defaultProfile.facebook_link,
+    instagram_link: profile?.instagram_link || defaultProfile.instagram_link,
+    coursework: profile?.coursework || defaultProfile.coursework,
+    achievements: profile?.achievements || defaultProfile.achievements,
+  };
   const displayProjects = projects.length > 0 ? projects : defaultProjects;
+  const displayEducation = education.map(e => ({
+    institution: e.institution,
+    degree: e.degree || "",
+    field_of_study: e.field_of_study || "",
+    start_date: e.start_date || "",
+    end_date: e.end_date || "",
+  }));
+  const displayExperience = experience.map(e => ({
+    company: e.company,
+    position: e.position || "",
+    start_date: e.start_date || "",
+    end_date: e.end_date || "",
+    description: e.description || "",
+  }));
 
   return (
     <>
@@ -161,8 +193,8 @@ export default function Home() {
             onExitTerminal={toggleMode}
             profile={displayProfile}
             projects={displayProjects}
-            education={education}
-            experience={experience}
+            education={displayEducation}
+            experience={displayExperience}
             skills={skills}
           />
         )}
@@ -184,6 +216,7 @@ export default function Home() {
                 onOpenTerminal={toggleMode}
               />
               <About profile={displayProfile} />
+              <Skills />
               <Photos photos={photos} />
               <GitHub username="salahuddinselim" />
               <Projects projects={displayProjects} />

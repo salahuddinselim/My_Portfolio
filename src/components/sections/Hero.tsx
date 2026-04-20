@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { ArrowDownIcon } from "@/components/ui/Icons";
 
 interface Profile {
-  name: string;
-  role: string;
-  bio: string;
-  vision: string;
-  profile_image: string;
+  name?: string;
+  role?: string;
+  bio?: string;
+  vision?: string;
+  profile_image?: string;
 }
 
 interface HeroProps {
