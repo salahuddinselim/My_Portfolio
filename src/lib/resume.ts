@@ -37,7 +37,7 @@ export function generateATSResume(profile: Profile, education: Education[], expe
     lines.push("EDUCATION");
     lines.push("-----------------------------------");
     education.forEach((edu) => {
-      const dateRange = edu.current
+      const dateRange = edu.currently_studying
         ? `${edu.start_date} - Present` 
         : `${edu.start_date} - ${edu.end_date}`;
       lines.push(`${edu.institution} | ${dateRange}`);
@@ -53,7 +53,7 @@ export function generateATSResume(profile: Profile, education: Education[], expe
     lines.push("EXPERIENCE");
     lines.push("-----------------------------------");
     experience.forEach((exp) => {
-      const dateRange = exp.current
+      const dateRange = exp.currently_working
         ? `${exp.start_date} - Present` 
         : `${exp.start_date} - ${exp.end_date}`;
       lines.push(`${exp.position} at ${exp.company} | ${dateRange}`);
@@ -223,7 +223,7 @@ export function generateHTMLResume(profile: Profile, education: Education[], exp
     <div class="item">
       <div class="item-header">
         <span class="item-title">${edu.institution}</span>
-        <span class="item-date">${edu.current ? edu.start_date + " - Present" : edu.start_date + " - " + edu.end_date}</span>
+        <span class="item-date">${edu.currently_studying ? edu.start_date + " - Present" : edu.start_date + " - " + edu.end_date}</span>
       </div>
       <p class="item-sub">${edu.degree}${edu.field_of_study ? " in " + edu.field_of_study : ""}</p>
       ${edu.grade ? `<p class="item-sub2">Grade: ${edu.grade}</p>` : ""}
@@ -240,7 +240,7 @@ export function generateHTMLResume(profile: Profile, education: Education[], exp
     <div class="item">
       <div class="item-header">
         <span class="item-title">${exp.position} at ${exp.company}</span>
-        <span class="item-date">${exp.current ? exp.start_date + " - Present" : exp.start_date + " - " + exp.end_date}</span>
+        <span class="item-date">${exp.currently_working ? exp.start_date + " - Present" : exp.start_date + " - " + exp.end_date}</span>
       </div>
       ${exp.location ? `<p class="item-sub">${exp.location}</p>` : ""}
       ${exp.description ? `<p>${exp.description.replace(/\n/g, "<br>")}</p>` : ""}

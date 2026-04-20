@@ -48,23 +48,33 @@ export default function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const [profileRes, projectsRes, photosRes, educationRes, experienceRes, skillsRes] = await Promise.all([
-        supabase.from("profiles").select("*").limit(1),
-        supabase.from("projects").select("*").order("created_at", { ascending: false }),
-        supabase.from("photos").select("*").order("created_at", { ascending: false }),
-        supabase.from("education").select("*").order("start_date", { ascending: false }),
-        supabase.from("experience").select("*").order("start_date", { ascending: false }),
-        supabase.from("skills").select("name").order("category", { ascending: true }),
-      ]);
+      try {
+        const [profileRes, projectsRes, photosRes, educationRes, experienceRes, skillsRes] = await Promise.all([
+          supabase.from("profiles").select("*").limit(1),
+          supabase.from("projects").select("*").order("created_at", { ascending: false }),
+          supabase.from("photos").select("*").order("created_at", { ascending: false }),
+          supabase.from("education").select("*").order("start_date", { ascending: false }),
+          supabase.from("experience").select("*").order("start_date", { ascending: false }),
+          supabase.from("skills").select("name").order("category", { ascending: true }),
+        ]);
 
-      if (profileRes.data && profileRes.data.length > 0) {
-        setProfile(profileRes.data[0] as Profile);
+        console.log("Profile response:", profileRes);
+
+        if (profileRes.error) {
+          console.error("Profile error:", profileRes.error);
+        }
+
+        if (profileRes.data && profileRes.data.length > 0) {
+          setProfile(profileRes.data[0] as Profile);
+        }
+        setProjects(projectsRes.data || []);
+        setPhotos(photosRes.data || []);
+        setEducation(educationRes.data || []);
+        setExperience(experienceRes.data || []);
+        setSkills(skillsRes.data?.map(s => s.name) || []);
+      } catch (error) {
+        console.error("Fetch error:", error);
       }
-      setProjects(projectsRes.data || []);
-      setPhotos(photosRes.data || []);
-      setEducation(educationRes.data || []);
-      setExperience(experienceRes.data || []);
-      setSkills(skillsRes.data?.map(s => s.name) || []);
     };
 
     fetchData();
@@ -139,6 +149,7 @@ export default function Home() {
     field_of_study: e.field_of_study || "",
     start_date: e.start_date || "",
     end_date: e.end_date || "",
+    currently_studying: e.currently_studying || false,
   }));
   const displayExperience = experience.map(e => ({
     company: e.company,
@@ -146,6 +157,7 @@ export default function Home() {
     start_date: e.start_date || "",
     end_date: e.end_date || "",
     description: e.description || "",
+    currently_working: e.currently_working || false,
   }));
 
   return (

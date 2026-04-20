@@ -24,11 +24,11 @@ export interface Education {
   institution: string;
   degree?: string;
   field_of_study?: string;
-  start_date: string;
+  start_date?: string;
   end_date?: string;
   grade?: string;
   description?: string;
-  current?: boolean;
+  currently_studying?: boolean;
 }
 
 export interface Experience {
@@ -36,10 +36,10 @@ export interface Experience {
   company: string;
   position?: string;
   location?: string;
-  start_date: string;
+  start_date?: string;
   end_date?: string;
   description?: string;
-  current?: boolean;
+  currently_working?: boolean;
 }
 
 export interface Project {
