@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { TERMINAL } from "@/components/ui/Icons";
+import { TERMINAL, CodeIcon } from "@/components/ui/Icons";
 
 interface HeaderProps {
   onToggleTerminal?: () => void;
@@ -73,7 +73,7 @@ export default function Header({ onToggleTerminal }: HeaderProps) {
               onClick={onToggleTerminal}
               className="flex items-center gap-2 rounded-lg bg-primary/20 px-5 py-2 text-sm font-semibold text-primary transition-all hover:bg-primary/30 active:scale-95 shadow-sm"
             >
-              <Code className="h-4 w-4" />
+              <CodeIcon className="h-4 w-4" />
               <span className="hidden sm:inline">Toggle Terminal</span>
               <span className="sm:hidden">Toggle</span>
             </button>
